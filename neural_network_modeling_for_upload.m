@@ -6,7 +6,6 @@ TITLE={'$I_{\rm up}$ (A)', '$I_{\rm mid}$ (A)', '$I_{\rm down}$ (A)', '$I_{\rm t
     'SU (1)'};
 NEURONS=[10,10,10,0,5,5,0,0,0];% I_up use 5 neurons, I_mid use 10 neurons, I_tot use 8 neurons,
 EPOCH_TOTAL=3000; % In total, we train the network 1000 epochs (an epoch means that all of the training data is provided to the network once)
-% for i_output=[ 5      6        7      8      11      12 13     14      15   ]
 figure % draw the error curves during the training process
 ax1=subplot(1,2,1);
 ax2=subplot(1,2,2);
@@ -61,8 +60,6 @@ for i_output=[5 6 7 11 12]
         [net,tr] = train(net,train_set_X',train_set_Y'); % train the network using the training set
         errTrain=[errTrain,norm(train_set_Y'-net(train_set_X'),2)/sqrt(length(train_set_X))];% calculate the error on the training set
         errTest=[errTest,norm(test_set_Y'-net(test_set_X'),2)/sqrt(length(test_set_X))];% calculate the error on the test set
-%         errTest_Max=[errTest_Max,max(abs(test_set_Y'-net(test_set_X')))];
-%         errTrain_Max=[errTrain_Max,max(abs(train_set_Y'-net(train_set_X')))];
     end
     
     if i_output<=7
